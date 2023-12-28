@@ -1,60 +1,76 @@
-package com.dipika.student.presentation;
-import java.util.Scanner;
+package com.dipika.basic.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Student 
 {
-	    public static void main(String[] args) 
-	    {
-	        Scanner scanner = new Scanner(System.in);         
-	        System.out.println("_______________________________________________");
-	        System.out.println();
-	        System.out.print("Enter the number of subjects: ");
-	        int numSubjects = scanner.nextInt();
-	        System.out.println("_______________________________________________");
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer studentId;
+	@Column(length = 20)
+	private String studentName;
+	@Column(length = 20)
+	private String studentEmail;
+	@Column(length = 10)
+	private String studentContactNo;
+	@Column(length = 20)
+	private String studentAddress;
+	@Column(length = 20)
+	private String password;
+		
+	//getter setter
 
-	        int[] subjectMarks = new int[numSubjects];
-	        for (int i = 0; i < numSubjects; i++) {
-	            System.out.print("Enter the marks for subject " + (i + 1) + ": ");
-	            subjectMarks[i] = scanner.nextInt();
-	        }
-	        System.out.println("_______________________________________________");
-
-	        int totalMarks=calculateTotalMarks(subjectMarks);
-	        double averagePercentage = calculateAveragePercentage(totalMarks, numSubjects);
-	        char grade = calculateGrade(averagePercentage);
-
-	        System.out.println("_______________________________________________");
-            System.out.println();
-            System.out.println("\t __________RESULT________");
-            System.out.println("Total Marks   Average Percentage      Grade");
-            System.out.println(totalMarks +"\t\t"+ averagePercentage +"\t\t\t"+ grade);
-	        
-	        System.out.println("_______________________________________________");
-	        scanner.close();
-	    }
-
-	    private static int calculateTotalMarks(int[] marks) {
-	        int total = 0;
-	        for (int mark : marks) {
-	            total += mark;
-	        }
-	        return total;
-	    }
-
-	    private static double calculateAveragePercentage(int totalMarks, int numSubjects) {
-	        return (double) totalMarks / numSubjects;
-	    }
-
-	    private static char calculateGrade(double averagePercentage) {
-	        if (averagePercentage >= 80) {
-	            return 'A';
-	        } else if (averagePercentage >= 60 &&  averagePercentage<80) {
-	            return 'B';
-	        } else if (averagePercentage >= 40 && averagePercentage<60) {
-	            return 'C';
-	        } else {
-	            return 'F';
-	        }
-	    }
+	public Integer getStudentId() {
+		return studentId;
 	}
 
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public String getStudentEmail() {
+		return studentEmail;
+	}
+
+	public void setStudentEmail(String studentEmail) {
+		this.studentEmail = studentEmail;
+	}
+
+	public String getStudentContactNo() {
+		return studentContactNo;
+	}
+
+	public void setStudentContactNo(String studentContactNo) {
+		this.studentContactNo = studentContactNo;
+	}
+
+	public String getStudentAddress() {
+		return studentAddress;
+	}
+
+	public void setStudentAddress(String studentAddress) {
+		this.studentAddress = studentAddress;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+}
